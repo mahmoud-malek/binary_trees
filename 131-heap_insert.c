@@ -21,7 +21,7 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	tree = *root;
 	tree_size = tree_size2(tree);
-	leaves = tree_size2;
+	leaves = tree_size;
 
 	for (level = 0, sub = 1; leaves >= sub; sub *= 2, level++)
 		leaves -= sub;
