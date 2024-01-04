@@ -102,5 +102,6 @@ avl_t *recursive_avl_insert(avl_t **tree, avl_t *parent,
 							avl_t **new_node, int value);
 int calculate_balance(const binary_tree_t *tree);
 size_t calculate_height(const binary_tree_t *tree);
+avl_t *array_to_avl(int *array, size_t size);
 
 #endif /*Binary trees header*/
