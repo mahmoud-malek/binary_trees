@@ -11,10 +11,12 @@
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
+	int node_count;
+
 	if (tree == NULL)
 		return (0);
 
-	int node_count = binary_tree_size(tree);
+	node_count = binary_tree_size(tree);
 
 	return (is_complete(tree, 0, node_count));
 }
