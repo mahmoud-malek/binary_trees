@@ -1,42 +1,51 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_levelorder - Performs level-order traversal on a binary tree
- * @tree: Pointer to the root node of the tree to traverse
- * @func: Pointer to a function to call for each node
- *
- * Description: Level-order traversal visits nodes level by level,
- *               from left to right.
+ * binary_tree_levelorder - Goes through a binary tree using
+ *  level-order traversal
+ * @tree: A pointer to the root node of the tree to traverse
+ * @func: A pointer to a function to call for each node
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
+	levelorder_queue_t *queue_head, *queue_tail;
+	const binary_tree_t *current;
+	levelorder_queue_t *tmp;
+
 	if (tree == NULL || func == NULL)
 		return;
-
-	/* Create a queue for level-order traversal */
-	const binary_tree_t **queue = malloc(sizeof(binary_tree_t *) * 1024);
-	size_t front = 0, rear = 0;
-
-	if (queue == NULL)
+	queue_head = NULL, queue_tail = NULL;
+	queue_head = queue_tail = malloc(sizeof(levelorder_queue_t));
+	if (queue_head == NULL)
 		return;
-
-	queue[rear++] = tree;
-
-	while (front < rear)
+	queue_head->node = tree, queue_head->next = NULL;
+	while (queue_head)
 	{
-		const binary_tree_t *current = queue[front++];
-
-		/* Perform the given function on the current node's value */
+		current = queue_head->node;
 		func(current->n);
-
-		/* Enqueue left child if exists */
-		if (current->left != NULL)
-			queue[rear++] = current->left;
-
-		/* Enqueue right child if exists */
-		if (current->right != NULL)
-			queue[rear++] = current->right;
+		if (current->left)
+		{
+			queue_tail->next = malloc(sizeof(levelorder_queue_t));
+			if (!queue_tail->next)
+			{
+				free(queue_head);
+				return;
+			}
+			queue_tail = queue_tail->next;
+			queue_tail->node = current->left, queue_tail->next = NULL;
+		}
+		if (current->right)
+		{
+			queue_tail->next = malloc(sizeof(levelorder_queue_t));
+			if (!queue_tail->next)
+			{
+				free(queue_head);
+				return;
+			}
+			queue_tail = queue_tail->next;
+			queue_tail->node = current->right, queue_tail->next = NULL;
+		}
+		tmp = queue_head, queue_head = queue_head->next;
+		free(tmp);
 	}
-
-	free(queue);
 }
