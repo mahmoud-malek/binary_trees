@@ -9,7 +9,7 @@
  */
 bst_t *array_to_bst(int *array, size_t size)
 {
-	bst_t *root;
+	bst_t *root, *state;
 
 	if (array == NULL || size == 0)
 		return (NULL);
@@ -18,7 +18,10 @@ bst_t *array_to_bst(int *array, size_t size)
 
 	for (size_t i = 0; i < size; ++i)
 	{
-		if (bst_insert(&root, array[i]) == NULL)
+
+		state = bst_insert(&root, array[i]);
+
+		if (state == NULL)
 			continue;
 	}
 
