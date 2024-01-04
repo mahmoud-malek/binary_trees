@@ -97,4 +97,10 @@ binary_tree_t *basic_tree(void);
 int binary_tree_is_avl(const binary_tree_t *tree);
 int binary_tree_is_bst(const binary_tree_t *tree, int min, int max);
 int binary_tree_height2(const binary_tree_t *tree);
+avl_t *avl_insert(avl_t **tree, int value);
+avl_t *recursive_avl_insert(avl_t **tree, avl_t *parent,
+							avl_t **new_node, int value);
+int calculate_balance(const binary_tree_t *tree);
+size_t calculate_height(const binary_tree_t *tree);
+
 #endif /*Binary trees header*/
