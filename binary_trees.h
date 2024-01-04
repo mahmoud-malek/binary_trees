@@ -103,5 +103,9 @@ avl_t *recursive_avl_insert(avl_t **tree, avl_t *parent,
 int calculate_balance(const binary_tree_t *tree);
 size_t calculate_height(const binary_tree_t *tree);
 avl_t *array_to_avl(int *array, size_t size);
+int node_removal_type(bst_t *root);
+int find_successor(bst_t *node);
+void balance_avl(avl_t **avl_tree);
+avl_t *avl_remove(avl_t *root, int value);
 
 #endif /*Binary trees header*/
