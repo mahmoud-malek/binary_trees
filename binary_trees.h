@@ -1,6 +1,7 @@
 #ifndef BINARY_TREES
 #define BINARY_TREES
 
+#include <limits.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,7 +86,6 @@ size_t binary_tree_size(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 int is_bst_util(const binary_tree_t *tree, int min, int max);
-int binary_tree_is_bst(const binary_tree_t *tree);
 bst_t *bst_insert(bst_t **tree, int value);
 bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
@@ -93,5 +93,8 @@ bst_t *bst_remove(bst_t *root, int value);
 bst_t *remove_recursive(bst_t *root, bst_t *node, int value);
 bst_t *delete_node(bst_t *root, bst_t *node);
 bst_t *inorder_successor_node(bst_t *root);
-
+binary_tree_t *basic_tree(void);
+int binary_tree_is_avl(const binary_tree_t *tree);
+int binary_tree_is_bst(const binary_tree_t *tree, int min, int max);
+int binary_tree_height2(const binary_tree_t *tree);
 #endif /*Binary trees header*/
