@@ -83,5 +83,8 @@ binary_tree_queue_t *enqueue(binary_tree_queue_t *queue_head,
 int is_complete(const binary_tree_t *tree, int index, int node_count);
 size_t binary_tree_size(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
+int is_bst_util(const binary_tree_t *tree, int min, int max);
+int binary_tree_is_bst(const binary_tree_t *tree);
 
 #endif /*Binary trees header*/
