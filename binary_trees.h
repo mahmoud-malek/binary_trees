@@ -115,5 +115,7 @@ int validate_parent(const binary_tree_t *tree);
 int is_complete_tree(const binary_tree_t *tree);
 int complete_tree_checker(const binary_tree_t *tree, int index, int total_nodes);
 size_t tree_size(const binary_tree_t *tree);
+heap_t *max_heap_insert(heap_t **root, int value);
+size_t tree_size2(const binary_tree_t *tree);
 
 #endif /*Binary trees header*/
