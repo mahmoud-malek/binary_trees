@@ -108,6 +108,7 @@ int find_successor(bst_t *node);
 void balance_avl(avl_t **avl_tree);
 avl_t *avl_remove(avl_t *root, int value);
 avl_t *sorted_array_to_avl(int *array, size_t size);
-avl_t *create_avl_from_sorted_array(avl_t *parent, int *array, int start, int end);
+avl_t *create_avl_from_sorted_array(avl_t *parent, int *array,
+									int start, int end);
 
 #endif /*Binary trees header*/
