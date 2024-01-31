@@ -13,9 +13,28 @@
 
 void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
 {
+	const binary_tree_t *stack[1000];
+	int output[1000];
+	const binary_tree_t *current;
+	int top = -1, idx = 0;
+
 	if (tree == NULL || func == NULL)
 		return;
-	binary_tree_postorder(tree->left, func);
-	binary_tree_postorder(tree->right, func);
-	func(tree->n);
+
+	stack[++top] = tree;
+
+	while (top != -1)
+	{
+		current = stack[top--];
+		output[idx++] = current->n;
+
+		if (current->left != NULL)
+			stack[++top] = current->left;
+
+		if (current->right != NULL)
+			stack[++top] = current->right;
+	}
+
+	while (idx > 0)
+		func(output[--idx]);
 }
