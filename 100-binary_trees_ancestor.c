@@ -11,6 +11,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 									 const binary_tree_t *second)
 {
 	const binary_tree_t *temp;
+	const binary_tree_t *temp2;
 
 	/* Handle edge cases where either of the nodes is NULL */
 	if (first == NULL || second == NULL)
@@ -18,22 +19,15 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 
 	/* Store the first node to traverse upwards */
 	temp = first;
-
+	temp2 = second;
 	/* Traverse upwards from the first node */
-	while (temp)
+	while (temp && temp2)
 	{
-		const binary_tree_t *ancestor = second;
+		if (temp == temp2 || temp->parent == temp2 || temp2->parent == temp)
+			return ((binary_tree_t *)temp);
 
-		/* Check if the current node is the common ancestor */
-		while (ancestor)
-		{
-			if (temp == ancestor)
-				return ((binary_tree_t *)temp);
-			ancestor = ancestor->parent;
-		}
-
-		/* Move to the parent of the first node */
 		temp = temp->parent;
+		temp2 = temp2->parent;
 	}
 
 	return (NULL); /* No common ancestor found */
